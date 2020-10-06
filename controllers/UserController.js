@@ -29,7 +29,7 @@ const UserController = {
   },
   updateUser: async function (req, res, next) {
     try {
-      eq.body.password = await bcrypt.hash(req.body.password, 10);
+      req.body.password = await bcrypt.hash(req.body.password, 10);
 
       const [RowsCount, Rows] = await User.update(req.body, {
         where: {
